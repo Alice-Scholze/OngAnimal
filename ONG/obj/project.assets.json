@@ -2440,11 +2440,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alice\\Documents\\OngAnimal\\ONG\\ONG\\ONG.csproj",
+      "projectUniqueName": "C:\\Users\\Alice\\Documents\\OngAnimal\\ONG\\ONG.csproj",
       "projectName": "ONG",
-      "projectPath": "C:\\Users\\Alice\\Documents\\OngAnimal\\ONG\\ONG\\ONG.csproj",
+      "projectPath": "C:\\Users\\Alice\\Documents\\OngAnimal\\ONG\\ONG.csproj",
       "packagesPath": "C:\\Users\\Alice\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alice\\Documents\\OngAnimal\\ONG\\ONG\\obj\\",
+      "outputPath": "C:\\Users\\Alice\\Documents\\OngAnimal\\ONG\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
