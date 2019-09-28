@@ -1,0 +1,14 @@
+C:\Users\Alice\Documents\OngAnimal\ONG\bin\Debug\ONG.dll.config
+C:\Users\Alice\Documents\OngAnimal\ONG\bin\Debug\ONG.dll
+C:\Users\Alice\Documents\OngAnimal\ONG\bin\Debug\ONG.pdb
+C:\Users\Alice\Documents\OngAnimal\ONG\bin\Debug\EntityFramework.dll
+C:\Users\Alice\Documents\OngAnimal\ONG\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alice\Documents\OngAnimal\ONG\bin\Debug\EntityFramework.xml
+C:\Users\Alice\Documents\OngAnimal\ONG\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Alice\Documents\OngAnimal\ONG\obj\Debug\ONG.csprojAssemblyReference.cache
+C:\Users\Alice\Documents\OngAnimal\ONG\obj\Debug\ONG.csproj.CoreCompileInputs.cache
+C:\Users\Alice\Documents\OngAnimal\ONG\obj\Debug\ONG.csproj.CopyComplete
+C:\Users\Alice\Documents\OngAnimal\ONG\obj\Debug\ONG.dll
+C:\Users\Alice\Documents\OngAnimal\ONG\obj\Debug\ONG.pdb
+C:\Users\Alice\Documents\OngAnimal\ONG\obj\Debug\ONG.Migrations.InitialMigration.resources
+C:\Users\Alice\Documents\OngAnimal\ONG\obj\Debug\ONG.csproj.GenerateResource.cache
