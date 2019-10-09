@@ -1,0 +1,28 @@
+﻿@model Presentation.ViewModel.CityVM
+
+@{
+    ViewBag.Title = "Criação de cidade";
+}
+
+<h2>Create</h2>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        @using (Html.BeginForm("Create", "City", FormMethod.Post))
+        {
+            @Html.Label("Nome: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Nome da cidade" }) <br />
+
+            @Html.Label("UF: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.UF, new { @class = "form-control", @placeholder = "UF da cidade" }) <br />
+
+            @Html.Label("País: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.Country, new { @class = "form-control", @placeholder = "País da cidade" }) <br />
+
+            @Html.Label("Codigo municipal: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.MunicipalCode, new { @class = "form-control", @placeholder = "Código municipal da cidade" }) <br />
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        }
+    </div>
+</div>
