@@ -10,7 +10,7 @@ namespace Util.WebApi
         {
             return new WebApiClient();
         }
-        public T Get<T>(string endpoint, object parameters)
+        public T Get<T>(string endpoint, string parameters)
         {
             var compiledParameters = MountParameters(parameters);
 
@@ -21,7 +21,7 @@ namespace Util.WebApi
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.GetAsync($"{endpoint}").Result;
+                var response = client.GetAsync($"{endpoint}{parameters}").Result;
 
                 if (response.IsSuccessStatusCode)
                 {
