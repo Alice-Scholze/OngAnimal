@@ -1,7 +1,45 @@
-﻿
+﻿@model List<Presentation.ViewModel.CityVM>
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-11 col-md-11 col-lg-11">
+
+            <h2>Cidades</h2>
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1">
+            <br />
+            <a href='@Url.Action("Create", "City")'></a>
+            <input type="button" class="btn btn-primary" value='Nova cidade' />
+            </a>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <td>Código municipal</td>
+                        <td>Nome</td>
+                        <td>País</td>
+                        <td>UF</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var field in Model)
+                    {
+                        <tr>
+                            <th>@field.MunicipalCode</th>
+                            <th>@field.Name</th>
+                            <th>@field.Country</th>
+                            <th>@field.UF</th>
+                            <th>@Html.ActionLink("Editar", "Create", "City", new { id = field.Id }, null)</th>
+                            <th>@Html.ActionLink("Deletar", "Delete", "City", new { id = field.Id }, null)</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+<br />
+<br />
 

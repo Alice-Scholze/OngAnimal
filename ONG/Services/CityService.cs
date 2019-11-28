@@ -38,6 +38,11 @@ namespace ONG.Services
             cityRepository.Insert(city);
         }
 
+        public void Update(City city)
+        {
+            cityRepository.Edit(city);
+        }
+
         public void Delete(long id)
         {
             City city = cityRepository.GetById(id);
