@@ -24,6 +24,13 @@ namespace ONG.Repository
             Save();
         }
 
+        public void Edit(Voluntary volutary)
+        {
+            Voluntary voluntarioOld = GetById(volutary.Id);
+            voluntarioOld = volutary;
+            Save();
+        }
+
         public void InsertDateDeparture(Voluntary voluntary)
         {
             Voluntary voluntarioOld = GetById(voluntary.Id);

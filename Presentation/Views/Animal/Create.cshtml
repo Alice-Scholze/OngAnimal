@@ -1,0 +1,24 @@
+﻿@model Presentation.ViewModel.AnimalVM
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        @using (Html.BeginForm("Create", "Animal", FormMethod.Post))
+        {
+            @Html.Label("Nome: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Nome do animal" }) <br />
+
+            @Html.Label("Raça: ", new { @class = "col-form-label" })
+            @Html.DropDownListFor(x => x.Race.Id, Model.Races.Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString(), Selected = x.Id.ToString().Equals(Model.Race.Id.ToString()) }), new { @class = "form-control"})
+
+            @Html.Label("Gênero: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.Gender, new { @class = "form-control", @placeholder = "País do gênero" }) <br />
+
+            @Html.Label("Observação: ", new { @class = "col-form-label" })
+            @Html.TextAreaFor(m => m.Note, new { @class = "form-control" }) <br />
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        }
+    </div>
+</div>

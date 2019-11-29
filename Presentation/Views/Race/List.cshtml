@@ -1,0 +1,40 @@
+﻿@model List<Presentation.ViewModel.RaceVM>
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="col-sm-11 col-md-11 col-lg-11">
+
+        <h2>Raças</h2>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1">
+        <br />
+        <a href='@Url.Action("Create", "Race")'></a>
+        <input type="button" class="btn btn-primary" value='Nova raça' />
+        </a>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Espécie</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var field in Model)
+                {
+                    <tr>
+                        <th>@field.Name</th>
+                        <th>@field.Specie</th>
+                        <th>@Html.ActionLink("Editar", "Create", "Race", new { id = field.Id }, null)</th>
+                        <th>@Html.ActionLink("Deletar", "Delete", "Race", new { id = field.Id }, null)</th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<br />

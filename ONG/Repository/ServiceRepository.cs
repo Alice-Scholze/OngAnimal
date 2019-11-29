@@ -24,6 +24,14 @@ namespace ONG.Repository
             Save();
         }
 
+        public void Edit(Service service)
+        {
+            Service serviceOld = GetById(service.Id);
+            serviceOld = service;
+
+            Save();
+        }
+
         public void Delete(Service service)
         {
             db.Services.Remove(service);

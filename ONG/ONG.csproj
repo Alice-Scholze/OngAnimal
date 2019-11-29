@@ -68,6 +68,15 @@
     <Compile Include="Domain\Race.cs" />
     <Compile Include="Domain\Service.cs" />
     <Compile Include="Domain\Voluntary.cs" />
+    <Compile Include="Migrations\201911272245248_InitialCreate.cs" />
+    <Compile Include="Migrations\201911272245248_InitialCreate.designer.cs">
+      <DependentUpon>201911272245248_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911282103203_1.cs" />
+    <Compile Include="Migrations\201911282103203_1.designer.cs">
+      <DependentUpon>201911282103203_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdopterRepository.cs" />
     <Compile Include="Repository\AdoptionRepository.cs" />
@@ -92,6 +101,7 @@
     <Compile Include="Services\AnimalService.cs" />
     <Compile Include="Services\CityService.cs" />
     <Compile Include="Services\DoadorServico.cs" />
+    <Compile Include="Services\DonationService.cs" />
     <Compile Include="Services\FinancialBoxService.cs" />
     <Compile Include="Services\FunctionService.cs" />
     <Compile Include="Services\MoneyDonationService.cs" />
@@ -107,6 +117,14 @@
     <None Include="App.config" />
     <None Include="Domain\App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911272245248_InitialCreate.resx">
+      <DependentUpon>201911272245248_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911282103203_1.resx">
+      <DependentUpon>201911282103203_1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

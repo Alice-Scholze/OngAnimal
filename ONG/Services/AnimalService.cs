@@ -8,10 +8,12 @@ namespace ONG.Services
     public class AnimalService
     {
         private AnimalRepository animalRepository;
+        private RaceService raceService;
 
         public AnimalService()
         {
             animalRepository = new AnimalRepository();
+            raceService = new RaceService();
         }
 
         public List<Animal> GetAll()
@@ -19,23 +21,29 @@ namespace ONG.Services
             return animalRepository.GetAll();
         }
 
-        public Animal BuscarAnimalPorCodigo(long id)
+        public Animal GetById(long id)
         {
-            return animalRepository.GetById(id);
+            Animal animal = animalRepository.GetById(id);
+            animal.Race = raceService.GetById(animal.Race.Id);
+            return animal;
         }
 
-        public void AdicionarAnimal(Animal animal)
+        public void Insert(Animal animal)
         {
             if (animal == null)
                 throw new Exception("O animal não pode ser nulo");
 
             if (string.IsNullOrEmpty(animal.Name))
-                throw new Exception("O adotante precisa ter Name");
+                throw new Exception("O animal precisa ter Name");
 
-            if (animal.DateEntry == null || animal.DateEntry == DateTime.MinValue)
-                throw new Exception("Informe a data de entrada do animal");
+            animal.DateEntry = DateTime.Now;
 
             animalRepository.Insert(animal);
+        }
+
+        public void Update(Animal animal)
+        {
+            animalRepository.Edit(animal);
         }
 
         public void Delete(long id)

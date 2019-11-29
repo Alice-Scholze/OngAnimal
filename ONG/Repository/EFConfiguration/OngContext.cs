@@ -6,7 +6,7 @@ namespace ONG.Repository.EFConfiguration
 {
     public class OngContext : DbContext
     {
-        public OngContext() : base("OngContext") { }
+        public OngContext() : base("Ong") { }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Adopter> Adopters { get; set; }
         public DbSet<Animal> Animals { get; set; }
