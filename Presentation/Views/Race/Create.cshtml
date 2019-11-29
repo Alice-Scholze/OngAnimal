@@ -1,0 +1,25 @@
+﻿@model Presentation.ViewModel.RaceVM
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        @using (Html.BeginForm("Create", "Race", FormMethod.Post))
+        {
+            @Html.Label("Nome: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Nome da raça" }) <br />
+
+            @Html.Label("Espécie: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.Specie, new { @class = "form-control", @placeholder = "UF da espécie" }) <br />
+
+            @Html.Label("Porte: ", new { @class = "col-form-label" })
+            @Html.TextBoxFor(m => m.Size, new { @class = "form-control", @placeholder = "Porte da raça" }) <br />
+
+            @Html.Label("Observação: ", new { @class = "col-form-label" })
+            @Html.TextAreaFor(m => m.Note, new { @class = "form-control" }) <br />
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        }
+    </div>
+    </div>
+

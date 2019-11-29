@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -10,16 +12,16 @@ namespace Util.WebApi
         {
             return new WebApiClient();
         }
-        public T Get<T>(string endpoint, string parameters)
+        public T Get<T>(string endpoint, object parameters)
         {
-            var compiledParameters = MountParameters(parameters);
-
             using (var client = new HttpClient())
             {
 
                 client.BaseAddress = new Uri($"https://localhost:44357/api/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                parameters = MountParams(parameters);
 
                 var response = client.GetAsync($"{endpoint}{parameters}").Result;
 
@@ -34,15 +36,28 @@ namespace Util.WebApi
             }
         }
 
-        private string MountParameters(object parameters)
+        private String MountParams(object data)
         {
-            string param = parameters.ToString();
-            return param;
-        }
+            String[] parameters = new string[] { };
 
-        public T Post<T>(string endpoint, object parameters, T body)
+            if (data != null)
+            {
+                parameters = data.ToString().Split(',');
+            }
+
+            String queryParam = String.Empty;
+
+            if (parameters.Length > 0) {
+                foreach (var parameter in parameters)
+                {
+                    queryParam = parameter == parameters[0] ? $"/{parameter}" : $"&{parameter}";
+                }
+            }
+
+            return queryParam;
+        }
+        public T Post<T>(string endpoint, T body)
         {
-            var compiledParameters = MountParameters(parameters);
 
             using (var client = new HttpClient())
             {
@@ -50,7 +65,7 @@ namespace Util.WebApi
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.PostAsJsonAsync<T>($"{endpoint}{compiledParameters}", body).Result;
+                var response = client.PostAsJsonAsync<T>($"{endpoint}", body).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -64,9 +79,8 @@ namespace Util.WebApi
             }
         }
 
-        public void Post(string endpoint, object parameters)
+        public T Put<T>(string endpoint, object parameters, T body)
         {
-            var compiledParameters = MountParameters(parameters);
 
             using (var client = new HttpClient())
             {
@@ -74,12 +88,42 @@ namespace Util.WebApi
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.PostAsync($"{endpoint}{compiledParameters}", null).Result;
+                parameters = MountParams(parameters);
+
+                var response = client.PutAsJsonAsync<T>($"{endpoint}{parameters}", body).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
                     var contractString = response.Content.ReadAsStringAsync().Result;
-                    var result = response.Content.ReadAsAsync<string>().Result;
+                    return response.Content.ReadAsAsync<T>().Result;
+                }
+                else
+                {
+                    return default(T);
+                }
+            }
+        }
+
+        public T Delete<T>(string endpoint, object parameters)
+        {
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri($"https://localhost:44357/api/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                parameters = MountParams(parameters);
+
+                var response = client.DeleteAsync($"{endpoint}{parameters}").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsAsync<T>().Result;
+                }
+                else
+                {
+                    return default(T);
                 }
             }
         }

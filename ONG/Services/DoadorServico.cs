@@ -14,17 +14,17 @@ namespace ONG.Services
             doadorRepositorio = new DoadorRepositorio();
         }
 
-        public List<Donor> DoadoresCadastrados()
+        public List<Donor> GetAll()
         {
-            return doadorRepositorio.DoadoresCadastrados();
+            return doadorRepositorio.GetAll();
         }
 
-        public Donor BuscarDoadorPorCodigo(long codigo)
+        public Donor GetById(long codigo)
         {
-            return doadorRepositorio.BuscarDoadorPorCodigo(codigo);
+            return doadorRepositorio.GetById(codigo);
         }
 
-        public void AdicionarDoador(Donor doador)
+        public void Insert(Donor doador)
         {
             if (doador == null)
                 throw new Exception("O doador não pode ser nulo");
@@ -44,17 +44,40 @@ namespace ONG.Services
             if (string.IsNullOrEmpty(doador.Phone))
                 throw new Exception("O adotante precisa ter Telefone");
 
-            doadorRepositorio.AdicionarDoador(doador);
+            doadorRepositorio.Insert(doador);
         }
 
-        public void ApagarDoador(long id)
+        public void Update(Donor doador)
         {
-            Donor doador = doadorRepositorio.BuscarDoadorPorCodigo(id);
+            if (doador == null)
+                throw new Exception("O doador não pode ser nulo");
+
+            if (string.IsNullOrEmpty(doador.CPF))
+                throw new Exception("O adotante precisa ter CPF");
+
+            if (string.IsNullOrEmpty(doador.Name))
+                throw new Exception("O adotante precisa ter Name");
+
+            if (string.IsNullOrEmpty(doador.Address))
+                throw new Exception("O adotante precsa ter Endereço");
+
+            if (string.IsNullOrEmpty(doador.Email))
+                throw new Exception("O andotante precisa ter Email");
+
+            if (string.IsNullOrEmpty(doador.Phone))
+                throw new Exception("O adotante precisa ter Telefone");
+
+            doadorRepositorio.Edit(doador);
+        }
+
+        public void Delete(long id)
+        {
+            Donor doador = doadorRepositorio.GetById(id);
 
             if (doador == null)
                 throw new Exception("Donor não encontrado");
 
-            doadorRepositorio.ApagarDoador(doador);
+            doadorRepositorio.Delete(doador);
         }
     }
 }

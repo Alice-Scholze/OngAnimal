@@ -8,7 +8,7 @@ namespace ONG.Domain
         public string Name { get; set; }
         public virtual Race Race { get; set; }
         public DateTime DateEntry { get; set; }
-        public DateTime DateDeparture { get; set; }
+        public DateTime? DateDeparture { get; set; }
         public string Gender { get; set; }
         public string Note { get; set; }
 

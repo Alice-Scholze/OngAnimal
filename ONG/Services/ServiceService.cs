@@ -35,6 +35,17 @@ namespace ONG.Services
             serviceRepository.Insert(service);
         }
 
+        public void Update(Service service)
+        {
+            if (service == null)
+                throw new Exception("O serviço não pode ser nulo");
+
+            if (string.IsNullOrEmpty(service.Description))
+                throw new Exception("O serviço precisa ter Name");
+
+            serviceRepository.Edit(service);
+        }
+
         public void Delete(long id)
         {
             Service service = serviceRepository.GetById(id);

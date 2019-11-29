@@ -24,6 +24,17 @@ namespace ONG.Repository
             Save();
         }
 
+        public void Edit(City city)
+        {
+            City cityOld = GetById(city.Id);
+            cityOld.Name = city.Name;
+            cityOld.MunicipalCode = city.MunicipalCode;
+            cityOld.UF = city.UF;
+            cityOld.Country = city.Country;
+
+            Save();
+        }
+
         public void Delete(City city)
         {
             db.Cities.Remove(city);

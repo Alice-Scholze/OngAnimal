@@ -19,6 +19,11 @@ namespace ONG.Services
             return adopterRepository.GetAll();
         }
 
+        public Adopter GetById(int id)
+        {
+            return adopterRepository.GetById(id);
+        }
+
         public void Insert(Adopter adopter)
         {
             if (adopter == null)
@@ -40,6 +45,29 @@ namespace ONG.Services
                 throw new Exception("O adotante precisa ter Telefone");
 
             adopterRepository.Insert(adopter);
+        }
+
+        public void Update(Adopter adopter)
+        {
+            if (adopter == null)
+                throw new Exception("O adotante não pode ser nulo");
+
+            if (string.IsNullOrEmpty(adopter.CPF))
+                throw new Exception("O adotante precisa ter CPF");
+
+            if (string.IsNullOrEmpty(adopter.Name))
+                throw new Exception("O adotante precisa ter Name");
+
+            if (string.IsNullOrEmpty(adopter.Address))
+                throw new Exception("O adotante precsa ter Endereço");
+
+            if (string.IsNullOrEmpty(adopter.Email))
+                throw new Exception("O andotante precisa ter Email");
+
+            if (string.IsNullOrEmpty(adopter.Phone))
+                throw new Exception("O adotante precisa ter Telefone");
+
+            adopterRepository.Edit(adopter);
         }
 
         public void Delete(long id)

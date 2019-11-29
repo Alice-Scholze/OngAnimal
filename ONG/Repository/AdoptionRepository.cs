@@ -10,5 +10,11 @@ namespace ONG.Repository
         {
             return db.Adoptions.ToList();
         }
+
+        public void Insert(Adoption adoption)
+        {
+            db.Adoptions.Add(adoption);
+            Save();
+        }
     }
 }

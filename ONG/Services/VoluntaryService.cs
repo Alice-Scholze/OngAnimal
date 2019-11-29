@@ -62,6 +62,43 @@ namespace ONG.Services
             voluntaryRepository.Insert(volutary);
         }
 
+        public void Update(Voluntary volutary)
+        {
+            if (volutary == null)
+                throw new Exception("O voluntario não pode ser nulo");
+
+            if (string.IsNullOrEmpty(volutary.CPF))
+                throw new Exception("O voluntario precisa ter CPF");
+
+            if (string.IsNullOrEmpty(volutary.Name))
+                throw new Exception("O voluntario precisa ter Name");
+
+            if (volutary.Function.Procedure == "Sim")
+            {
+                if (string.IsNullOrEmpty(volutary.CRM))
+                    throw new Exception("Função com procedimento médico, preencha o CRM");
+            }
+
+            if (string.IsNullOrEmpty(volutary.Address))
+                throw new Exception("O voluntario precsa ter Endereço");
+
+            if (string.IsNullOrEmpty(volutary.Email))
+                throw new Exception("O voluntario precisa ter Email");
+
+            if (string.IsNullOrEmpty(volutary.Phone))
+                throw new Exception("O voluntario precisa ter Telefone");
+
+            if (string.IsNullOrEmpty(volutary.Address))
+                throw new Exception("O voluntario precsa ter Endereço");
+
+            if (string.IsNullOrEmpty(volutary.Email))
+                throw new Exception("O voluntario precisa ter Email");
+
+            if (volutary.DateEntry == null || volutary.DateEntry == DateTime.MinValue)
+                throw new Exception("Informe a data de entrada do voluntário");
+
+            voluntaryRepository.Edit(volutary);
+        }
         public void InsertDateDeparture(Voluntary voluntario, DateTime saida)
         {
             voluntario.DateDeparture = saida;

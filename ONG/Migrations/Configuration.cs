@@ -10,6 +10,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "ONG.Repository.EFConfiguration.OngContext";
         }
 
         protected override void Seed(ONG.Repository.EFConfiguration.OngContext context)

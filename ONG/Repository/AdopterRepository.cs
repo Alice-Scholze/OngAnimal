@@ -24,6 +24,20 @@ namespace ONG.Repository
             Save();
         }
 
+        public void Edit(Adopter adotante)
+        {
+            Adopter adopterOld = GetById(adotante.Id);
+            adopterOld.Name = adotante.Name;
+            adopterOld.Note = adotante.Note;
+            adopterOld.Phone = adotante.Phone;
+            adopterOld.Address = adotante.Address;
+            adopterOld.City = adotante.City;
+            adopterOld.CPF = adotante.CPF;
+            adopterOld.Email = adotante.Email;
+
+            Save();
+        }
+
         public void Delete(Adopter adopter)
         {
             db.Adopters.Remove(adopter);

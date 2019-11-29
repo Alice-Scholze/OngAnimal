@@ -43,7 +43,8 @@ namespace API.Controllers
         // PUT: api/Race/5
         public IHttpActionResult Put(int id, [FromBody]Race race)
         {
-            return Content(HttpStatusCode.NotImplemented, race);
+            raceService.Update(race);
+            return Ok();
         }
 
         // DELETE: api/Race/5

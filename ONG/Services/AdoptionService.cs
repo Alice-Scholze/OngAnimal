@@ -17,5 +17,10 @@ namespace ONG.Services
         {
             return adoptionRepository.GetAll();
         }
+
+        public void Insert(Adoption adoption)
+        {
+            adoptionRepository.Insert(adoption);
+        }
     }
 }

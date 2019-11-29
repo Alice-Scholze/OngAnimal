@@ -1,0 +1,44 @@
+﻿@model List<Presentation.ViewModel.AnimalVM>
+@{
+    ViewBag.Title = "List";
+}
+<div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="col-sm-11 col-md-11 col-lg-11">
+
+        <h2>Animais</h2>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1">
+        <br />
+        <a href='@Url.Action("Create", "Animal")'></a>
+        <input type="button" class="btn btn-primary" value='Novo animal' />
+        </a>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Raça</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var field in Model)
+                    {
+                        <tr>
+                            <th>@field.Name</th>
+                            <th>@field.Race.Name</th>
+                            <th>@Html.ActionLink("Editar", "Create", "Animal", new { id = field.Id }, null)</th>
+                            <th>@Html.ActionLink("Deletar", "Delete", "Animal", new { id = field.Id }, null)</th>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<br />
+
+

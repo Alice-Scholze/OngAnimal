@@ -24,6 +24,15 @@ namespace ONG.Repository
             Save();
         }
 
+        public void Edit(Function function)
+        {
+            Function functionOld = GetById(function.Id);
+            functionOld.Area = function.Area;
+            functionOld.Name = function.Name;
+            functionOld.Procedure = function.Procedure;
+
+            Save();
+        }
         public void Delete(Function function)
         {
             db.Functions.Remove(function);

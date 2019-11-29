@@ -1,10 +1,12 @@
 ﻿using ONG.Domain;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace ONG.Repository.EFConfiguration
 {
     public class OngContext : DbContext
     {
+        public OngContext() : base("Ong") { }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Adopter> Adopters { get; set; }
         public DbSet<Animal> Animals { get; set; }
@@ -23,5 +25,9 @@ namespace ONG.Repository.EFConfiguration
         public DbSet<Procedure> Procedures { get; set; }
         public DbSet<FinancialBox> FinancialBox { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }

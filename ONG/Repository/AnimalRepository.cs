@@ -25,6 +25,16 @@ namespace ONG.Repository
             Save();
         }
 
+        public void Edit(Animal animal)
+        {
+            Animal animalOld = GetById(animal.Id);
+            animalOld.Name = animal.Name;
+            animalOld.Race = animal.Race;
+            animalOld.Note = animal.Note;
+
+            Save();
+        }
+
         public void Delete(Animal animal)
         {
             db.Animals.Remove(animal);

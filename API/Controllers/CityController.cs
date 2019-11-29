@@ -34,9 +34,8 @@ namespace API.Controllers
         // PUT: api/City/5
         public IHttpActionResult Put(int id, [FromBody]City city)
         {
-            //TO DO
-            //cityService.Update(city);
-            return Content(HttpStatusCode.NotImplemented, city);
+            cityService.Update(city);
+            return Ok();
         }
 
         // DELETE: api/City/5

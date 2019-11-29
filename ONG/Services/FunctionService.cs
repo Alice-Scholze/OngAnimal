@@ -24,18 +24,32 @@ namespace ONG.Services
             return functionRepository.GetById(id);
         }
 
-        public void Insert(Function id)
+        public void Insert(Function function)
         {
-            if (id == null)
+            if (function == null)
                 throw new Exception("A função não pode ser nula");
 
-            if (string.IsNullOrEmpty(id.Name))
+            if (string.IsNullOrEmpty(function.Name))
                 throw new Exception("A função precisa ter Name");
 
-            if (string.IsNullOrEmpty(id.Area))
+            if (string.IsNullOrEmpty(function.Area))
                 throw new Exception("A função precisa ter área");
 
-            functionRepository.Insert(id);
+            functionRepository.Insert(function);
+        }
+
+        public void Update(Function function)
+        {
+            if (function == null)
+                throw new Exception("A função não pode ser nula");
+
+            if (string.IsNullOrEmpty(function.Name))
+                throw new Exception("A função precisa ter Name");
+
+            if (string.IsNullOrEmpty(function.Area))
+                throw new Exception("A função precisa ter área");
+
+            functionRepository.Edit(function);
         }
 
         public void Delete(long id)

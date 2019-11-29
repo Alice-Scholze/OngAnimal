@@ -35,7 +35,12 @@ namespace ONG.Services
             if (string.IsNullOrEmpty(race.Specie))
                 throw new Exception("A raça precisa ter Espécie");
 
-            raceRepository.AdicionarRaca(race);
+            raceRepository.Insert(race);
+        }
+
+        public void Update(Race race)
+        {
+            raceRepository.Edit(race);
         }
 
         public void Delete(long id)
